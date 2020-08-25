@@ -1,0 +1,32 @@
+#!/bin/bash
+#SBATCH --account=commons
+#SBATCH --partition=commons
+#SBATCH --job-name=T1111
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --time=4:00:00
+#SBATCH --mem=4000m
+#SBATCH --export=ALL
+#SBATCH --mail-user=mc70@rice.edu
+#SBATCH --mail-type=FAIL
+
+export s=$HOME/opt/script/results/
+
+date
+echo "My job ran on:"
+cat $PBS_NODEFILE
+
+#var=$(tail -1 idx)
+#python /scratch/mc70/Frust_Post_v2_MultiChain_ManyBody.py $var -0.5 0.5 200 9 0 Function1
+#cp tertiary_frustration.tcl frust_function1.tcl
+#cp contact.map frust_function1.map
+#cp Gr.txt frust_function1.txt
+#python /scratch/mc70/Frust_Post_v2_MultiChain_ManyBody.py $var -0.5 0.5 200 9 0 Function2
+#cp tertiary_frustration.tcl frust_function2.tcl
+#cp contact.map frust_function2.map
+#cp Gr.txt frust_function2.txt
+#python /scratch/mc70/Frust_Post_v2_MultiChain_ManyBody.py $var -0.5 0.5 200 9 0 Packing
+#cp tertiary_frustration.tcl frust_packing.tcl
+#cp contact.map frust_packing.map
+#cp Gr.txt frust_packing.txt
+python /scratch/mc70/Frust_Post_v2_MultiChain_ManyBody_MultiLig_Gr_ContactList.py 100 -3.0 0.5 200 9 0 Function1
